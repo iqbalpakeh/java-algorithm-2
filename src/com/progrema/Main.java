@@ -4,7 +4,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         {
             System.out.println("Bubble Sort");
             int[] arr = {20, 35, -15, 7, 55, 1, -22};
@@ -21,6 +20,25 @@ public class Main {
             show("sorted  ", arr);
         }
 
+        {
+            System.out.println("Insertion Sort");
+            int[] arr = {20, 35, -15, 7, 55, 1, -22};
+            show("unsorted", arr);
+            insertionSort(arr);
+            show("sorted  ", arr);
+        }
+
+    }
+
+    private static void insertionSort(int[] arr) {
+        for (int fui = 1; fui < arr.length; fui++) {
+            int i;
+            int ne = arr[fui];
+            for (i = fui; (i > 0) && (arr[i - 1] > ne); i--) {
+                arr[i] = arr[i - 1];
+            }
+            arr[i] = ne;
+        }
     }
 
     private static void bubbleSort(int[] arr) {
@@ -43,7 +61,6 @@ public class Main {
                 }
             }
             swap(arr, largestIndex, stopIndex);
-            // show("stopIndex " + stopIndex, arr); // debugging code!
         }
     }
 
