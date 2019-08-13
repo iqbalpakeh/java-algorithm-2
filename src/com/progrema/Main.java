@@ -19,6 +19,7 @@ public class Main {
                 }
             }
             swap(arr, largestIndex, stopIndex);
+            // show("stopIndex " + stopIndex, arr); // debugging code!
         }
     }
 
