@@ -3,11 +3,24 @@ package com.progrema;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {20, 35, -15, 7, 55, 1, -22};
-        show("unsorted", arr);
-        // selectionSort(arr);
-        bubbleSort(arr);
-        show("sorted  ", arr);
+
+
+        {
+            System.out.println("Bubble Sort");
+            int[] arr = {20, 35, -15, 7, 55, 1, -22};
+            show("unsorted", arr);
+            bubbleSort(arr);
+            show("sorted  ", arr);
+        }
+
+        {
+            System.out.println("Selection Sort");
+            int[] arr = {20, 35, -15, 7, 55, 1, -22};
+            show("unsorted", arr);
+            selectionSort(arr);
+            show("sorted  ", arr);
+        }
+
     }
 
     private static void bubbleSort(int[] arr) {
