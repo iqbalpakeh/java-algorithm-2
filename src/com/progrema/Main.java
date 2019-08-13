@@ -5,8 +5,21 @@ public class Main {
     public static void main(String[] args) {
 	    int[] arr = {20, 35, -15, 7, 55, 1, -22};
         show("unsorted", arr);
-        swap(arr, 0, 1);
+        selectionSort(arr);
         show("sorted  ", arr);
+    }
+
+    private static void selectionSort(int[] arr) {
+        int largestIndex;
+        for (int stopIndex = arr.length - 1; stopIndex >= 0; stopIndex--) {
+            largestIndex = 0;
+            for (int i = 1; i <= stopIndex; i++ ) {
+                if(arr[largestIndex] < arr[i]) {
+                    largestIndex = i;
+                }
+            }
+            swap(arr, largestIndex, stopIndex);
+        }
     }
 
     private static void show(String name, int[] arr) {
