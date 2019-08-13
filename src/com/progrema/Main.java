@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         {
-            System.out.println("Bubble Sort");
+            System.out.println("\nBubble Sort");
             int[] arr = {20, 35, -15, 7, 55, 1, -22};
             show("unsorted", arr);
             bubbleSort(arr);
@@ -13,7 +13,7 @@ public class Main {
         }
 
         {
-            System.out.println("Selection Sort");
+            System.out.println("\nSelection Sort");
             int[] arr = {20, 35, -15, 7, 55, 1, -22};
             show("unsorted", arr);
             selectionSort(arr);
@@ -21,7 +21,7 @@ public class Main {
         }
 
         {
-            System.out.println("Insertion Sort");
+            System.out.println("\nInsertion Sort");
             int[] arr = {20, 35, -15, 7, 55, 1, -22};
             show("unsorted", arr);
             insertionSort(arr);
