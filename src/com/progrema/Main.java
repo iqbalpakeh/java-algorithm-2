@@ -44,9 +44,9 @@ public class Main {
         for (int gap = arr.length / 2; gap > 0; gap = gap / 2) {
             int ne, j;
             for (int i = gap; i < arr.length; i++) {
-                ne = arr[gap];
-                for (j = i - gap; (j >= 0) && (ne < arr[j]); j -= gap) {
-                    arr[j + gap] = arr[j];
+                ne = arr[i];
+                for (j = i; (j > 0) && (ne < arr[j - gap]); j -= gap) {
+                    arr[j] = arr[j - gap];
                 }
                 arr[j] = ne;
             }
