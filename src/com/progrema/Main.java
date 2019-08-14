@@ -6,29 +6,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // {
-        //     System.out.println("\nBubble Sort");
-        //     int[] arr = {20, 35, -15, 7, 55, 1, -22};
-        //     show("unsorted", arr);
-        //     bubbleSort(arr);
-        //     show("sorted  ", arr);
-        // }
-        //
-        // {
-        //     System.out.println("\nSelection Sort");
-        //     int[] arr = {20, 35, -15, 7, 55, 1, -22};
-        //     show("unsorted", arr);
-        //     selectionSort(arr);
-        //     show("sorted  ", arr);
-        // }
-        //
-        // {
-        //     System.out.println("\nInsertion Sort");
-        //     int[] arr = {20, 35, -15, 7, 55, 1, -22};
-        //     show("unsorted", arr);
-        //     insertionSort(arr);
-        //     show("sorted  ", arr);
-        // }
+        {
+            System.out.println("\nBubble Sort");
+            int[] arr = {20, 35, -15, 7, 55, 1, -22};
+            show("unsorted", arr);
+            bubbleSort(arr);
+            show("sorted  ", arr);
+        }
+
+        {
+            System.out.println("\nSelection Sort");
+            int[] arr = {20, 35, -15, 7, 55, 1, -22};
+            show("unsorted", arr);
+            selectionSort(arr);
+            show("sorted  ", arr);
+        }
+
+        {
+            System.out.println("\nInsertion Sort");
+            int[] arr = {20, 35, -15, 7, 55, 1, -22};
+            show("unsorted", arr);
+            insertionSort(arr);
+            show("sorted  ", arr);
+        }
 
         {
             System.out.println("\nShell Sort");
@@ -42,13 +42,13 @@ public class Main {
 
     private static void shellSort(@NotNull int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap = gap / 2) {
-            int ne, j;
-            for (int i = gap; i < arr.length; i++) {
-                ne = arr[i];
-                for (j = i; (j > 0) && (ne < arr[j - gap]); j -= gap) {
-                    arr[j] = arr[j - gap];
+            int ne, i;
+            for (int fui = gap; fui < arr.length; fui++) {
+                ne = arr[fui];
+                for (i = fui; (i > 0) && (ne < arr[i - gap]); i -= gap) {
+                    arr[i] = arr[i - gap];
                 }
-                arr[j] = ne;
+                arr[i] = ne;
             }
         }
     }
