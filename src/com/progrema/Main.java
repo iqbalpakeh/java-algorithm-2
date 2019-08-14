@@ -1,36 +1,59 @@
 package com.progrema;
 
+import com.sun.istack.internal.NotNull;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        {
-            System.out.println("\nBubble Sort");
-            int[] arr = {20, 35, -15, 7, 55, 1, -22};
-            show("unsorted", arr);
-            bubbleSort(arr);
-            show("sorted  ", arr);
-        }
+        // {
+        //     System.out.println("\nBubble Sort");
+        //     int[] arr = {20, 35, -15, 7, 55, 1, -22};
+        //     show("unsorted", arr);
+        //     bubbleSort(arr);
+        //     show("sorted  ", arr);
+        // }
+        //
+        // {
+        //     System.out.println("\nSelection Sort");
+        //     int[] arr = {20, 35, -15, 7, 55, 1, -22};
+        //     show("unsorted", arr);
+        //     selectionSort(arr);
+        //     show("sorted  ", arr);
+        // }
+        //
+        // {
+        //     System.out.println("\nInsertion Sort");
+        //     int[] arr = {20, 35, -15, 7, 55, 1, -22};
+        //     show("unsorted", arr);
+        //     insertionSort(arr);
+        //     show("sorted  ", arr);
+        // }
 
         {
-            System.out.println("\nSelection Sort");
+            System.out.println("\nShell Sort");
             int[] arr = {20, 35, -15, 7, 55, 1, -22};
             show("unsorted", arr);
-            selectionSort(arr);
-            show("sorted  ", arr);
-        }
-
-        {
-            System.out.println("\nInsertion Sort");
-            int[] arr = {20, 35, -15, 7, 55, 1, -22};
-            show("unsorted", arr);
-            insertionSort(arr);
+            shellSort(arr);
             show("sorted  ", arr);
         }
 
     }
 
-    private static void insertionSort(int[] arr) {
+    private static void shellSort(@NotNull int[] arr) {
+        for (int gap = arr.length / 2; gap > 0; gap = gap / 2) {
+            int ne, j;
+            for (int i = gap; i < arr.length; i++) {
+                ne = arr[gap];
+                for (j = i - gap; (j >= 0) && (ne < arr[j]); j -= gap) {
+                    arr[j + gap] = arr[j];
+                }
+                arr[j] = ne;
+            }
+        }
+    }
+
+    private static void insertionSort(@NotNull int[] arr) {
         for (int fui = 1; fui < arr.length; fui++) {
             int i;
             int ne = arr[fui];
@@ -41,7 +64,7 @@ public class Main {
         }
     }
 
-    private static void bubbleSort(int[] arr) {
+    private static void bubbleSort(@NotNull int[] arr) {
         for (int j = arr.length - 1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
                 if (arr[i] > arr[i + 1]) {
@@ -51,7 +74,7 @@ public class Main {
         }
     }
 
-    private static void selectionSort(int[] arr) {
+    private static void selectionSort(@NotNull int[] arr) {
         int largestIndex;
         for (int stopIndex = arr.length - 1; stopIndex >= 0; stopIndex--) {
             largestIndex = 0;
@@ -64,7 +87,7 @@ public class Main {
         }
     }
 
-    private static void show(String name, int[] arr) {
+    private static void show(String name, @NotNull int[] arr) {
         System.out.print(name + ": ");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
