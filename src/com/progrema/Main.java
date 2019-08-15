@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] arrInit = {20, 35, -15, 7, 55, 1, -22};
-        // int[] arrInit = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        // int[] arrInit = {20, 35, -15, 7, 55, 1, -22};
+        int[] arrInit = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
         int[] arr = new int[arrInit.length];
 
         System.out.println("\nBubble Sort");

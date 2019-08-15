@@ -9,7 +9,7 @@ public class Sort {
             int ne, i;
             for (int fui = gap; fui < arr.length; fui++) {
                 ne = arr[fui];
-                for (i = fui; (i > 0) && (ne < arr[i - gap]); i -= gap) {
+                for (i = fui; (i >= gap) && (ne < arr[i - gap]); i -= gap) {
                     arr[i] = arr[i - gap];
                 }
                 arr[i] = ne;
