@@ -60,4 +60,9 @@ public class Sort {
         arr[j] = temp;
     }
 
+    static void copyArr(int[] sourceArr, int[] destinationArr) {
+        for (int i = 0; i < sourceArr.length; i++) {
+            destinationArr[i] = sourceArr[i];
+        }
+    }
 }

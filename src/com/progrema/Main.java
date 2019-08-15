@@ -46,10 +46,4 @@ public class Main {
         System.out.println();
     }
 
-    private static void copyArr(int[] sourceArr, int[] destinationArr) {
-        for (int i = 0; i < sourceArr.length; i++) {
-            destinationArr[i] = sourceArr[i];
-        }
-    }
-
 }
