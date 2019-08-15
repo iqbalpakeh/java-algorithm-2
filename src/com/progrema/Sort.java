@@ -4,6 +4,29 @@ import com.sun.istack.internal.NotNull;
 
 public class Sort {
 
+    // --------------------------------------------------------------------
+    // SORT SECTION
+    // --------------------------------------------------------------------
+
+    public static void mergeSort(@NotNull int[] arr) {
+        sort(arr, 0, arr.length - 1);
+    }
+
+    private static void sort(@NotNull int[] arr, int start, int end) {
+        if (start >= end) {
+            System.out.println("return!");
+            return;
+        }
+        int mid = start + (end - start) / 2;
+        sort(arr, start, mid);
+        sort(arr, mid + 1, end);
+        merge(arr, start, mid, end);
+    }
+
+    private static void merge(int[] arr, int start, int mid, int end) {
+        // do merge here!!
+    }
+
     public static void shellSort(@NotNull int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
             int ne, i;
@@ -50,6 +73,10 @@ public class Sort {
             swap(arr, largestIndex, stopIndex);
         }
     }
+
+    // --------------------------------------------------------------------
+    // UTIL SECTION
+    // --------------------------------------------------------------------
 
     private static void swap(int[] arr, int i, int j) {
         if (i == j) {
