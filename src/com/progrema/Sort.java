@@ -5,16 +5,15 @@ import com.sun.istack.internal.NotNull;
 public class Sort {
 
     // --------------------------------------------------------------------
-    // SORT SECTION
+    // MERGE SORT
     // --------------------------------------------------------------------
 
-    public static void mergeSort(@NotNull int[] arr) {
+    public static void mergeSort(int[] arr) {
         sort(arr, 0, arr.length - 1);
     }
 
-    private static void sort(@NotNull int[] arr, int start, int end) {
-        if (start >= end) {
-            System.out.println("return!");
+    private static void sort(int[] arr, int start, int end) {
+        if (start == end) {
             return;
         }
         int mid = start + (end - start) / 2;
@@ -24,8 +23,26 @@ public class Sort {
     }
 
     private static void merge(int[] arr, int start, int mid, int end) {
-        // do merge here!!
+        int i = start;
+        int j = mid + 1;
+        int[] buffer = new int[end - start + 1];
+        for (int k = 0; k < buffer.length; k++) {
+            if (i > mid) {
+                buffer[k] = arr[j++];
+            } else if (j > end) {
+                buffer[k] = arr[i++];
+            } else if (arr[i] < arr[j]) {
+                buffer[k] = arr[i++];
+            } else {
+                buffer[k] = arr[j++];
+            }
+        }
+        System.arraycopy(buffer, 0, arr, start, buffer.length);
     }
+
+    // --------------------------------------------------------------------
+    // SHELL SORT
+    // --------------------------------------------------------------------
 
     public static void shellSort(@NotNull int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
@@ -40,6 +57,10 @@ public class Sort {
         }
     }
 
+    // --------------------------------------------------------------------
+    // INSERTION SORT
+    // --------------------------------------------------------------------
+
     public static void insertionSort(@NotNull int[] arr) {
         for (int fui = 1; fui < arr.length; fui++) {
             int i;
@@ -51,6 +72,10 @@ public class Sort {
         }
     }
 
+    // --------------------------------------------------------------------
+    // BUBBLE SORT
+    // --------------------------------------------------------------------
+
     public static void bubbleSort(@NotNull int[] arr) {
         for (int j = arr.length - 1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
@@ -60,6 +85,10 @@ public class Sort {
             }
         }
     }
+
+    // --------------------------------------------------------------------
+    // SELECTION SORT
+    // --------------------------------------------------------------------
 
     public static void selectionSort(@NotNull int[] arr) {
         int largestIndex;
