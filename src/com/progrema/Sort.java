@@ -5,6 +5,35 @@ import com.sun.istack.internal.NotNull;
 public class Sort {
 
     // --------------------------------------------------------------------
+    // QUICK SORT
+    // --------------------------------------------------------------------
+
+    public static void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    private static void quickSort(int[] arr, int start, int end) {
+        if (start >= end) return;
+        int p = partition(arr, start, end);
+        quickSort(arr, start, p - 1);
+        quickSort(arr, p + 1, end);
+    }
+
+    private static int partition(int[] arr, int start, int end) {
+        int comp = arr[start];
+        int i = start;
+        int j = end + 1;
+        while (true) {
+            while (arr[++i] < comp) if (i == end) break;
+            while (arr[--j] > comp) if (j == start) break;
+            if (i >= j) break;
+            swap(arr, i, j);
+        }
+        swap(arr, start, j);
+        return j;
+    }
+
+    // --------------------------------------------------------------------
     // MERGE SORT
     // --------------------------------------------------------------------
 
