@@ -8,10 +8,10 @@ public class Sort {
     // COUNTING SORT
     // --------------------------------------------------------------------
 
-    public static void countingSort(int[] arr) {
-        int[] buff = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            buff[arr[i] - 1] += 1;
+    public static void countingSort(int[] arr, int min, int max) {
+        int[] buff = new int[max - min + 1];
+        for (int i = 0; i < buff.length; i++) {
+            buff[arr[i] - min]++;
         }
         int j = 0;
         clearArr(arr);
@@ -19,7 +19,7 @@ public class Sort {
             int count = buff[i];
             if (count > 0) {
                 for (int k = 1; k <= count; k++) {
-                    arr[j + k - 1] = i + 1;
+                    arr[j + k - 1] = i + min;
                 }
                 j += count;
             }

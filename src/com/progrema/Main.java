@@ -48,10 +48,11 @@ public class Main {
         quickSort(arr);
         show("sorted  ", arr);
 
-        int[] arrCount = {2, 5, 9, 8, 2, 8, 7, 10, 4, 3};
+        // int[] arrCount = {2, 5, 9, 8, 2, 8, 7, 10, 4, 3};
+        int[] arrCount = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
         System.out.println("\nCounting Sort");
         show("unsorted", arrCount);
-        countingSort(arrCount);
+        countingSort(arrCount, 1, 10);
         show("sorted  ", arrCount);
 
     }
