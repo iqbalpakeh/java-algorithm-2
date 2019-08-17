@@ -17,10 +17,11 @@ public class Sort {
         clearArr(arr);
         for (int i = 0; i < buff.length; i++) {
             int count = buff[i];
-            while (count > 0) {
-                arr[j + count - 1] = i + 1;
-                count--;
-                j++;
+            if (count > 0) {
+                for (int k = 1; k <= count; k++) {
+                    arr[j + k - 1] = i + 1;
+                }
+                j += count;
             }
         }
     }
