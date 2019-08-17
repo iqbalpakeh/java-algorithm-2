@@ -20,12 +20,12 @@ public class Sort {
     }
 
     private static int partition(int[] arr, int start, int end) {
-        int comp = arr[start];
+        int v = arr[start];
         int i = start;
         int j = end + 1;
         while (true) {
-            while (arr[++i] < comp) if (i == end) break;
-            while (arr[--j] > comp) if (j == start) break;
+            while (arr[++i] < v) if (i == end) break;
+            while (arr[--j] > v) if (j == start) break;
             if (i >= j) break;
             swap(arr, i, j);
         }
