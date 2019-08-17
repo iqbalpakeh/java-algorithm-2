@@ -5,6 +5,31 @@ import com.sun.istack.internal.NotNull;
 public class Sort {
 
     // --------------------------------------------------------------------
+    // COUNTING SORT
+    // --------------------------------------------------------------------
+
+    public static void countingSort(int[] arr) {
+        int[] buff = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            buff[arr[i] - 1] += 1;
+        }
+        int j = 0;
+        clearArr(arr);
+        for (int i = 0; i < buff.length; i++) {
+            int count = buff[i];
+            while (count > 0) {
+                arr[j + count - 1] = i + 1;
+                count--;
+                j++;
+            }
+        }
+    }
+
+    private static void clearArr(int[] arr) {
+        for (int i = 0; i < arr.length; i++) arr[i] = 0;
+    }
+
+    // --------------------------------------------------------------------
     // QUICK SORT
     // --------------------------------------------------------------------
 
