@@ -30,6 +30,12 @@ public class Main {
         insertionSort(arr);
         show("sorted  ", arr);
 
+        System.out.println("\nInsertion Sort Recursively");
+        copyArr(arrInit, arr);
+        show("unsorted", arr);
+        insertionSort(arr);
+        show("sorted  ", arr);
+
         System.out.println("\nShell Sort");
         copyArr(arrInit, arr);
         show("unsorted", arr);

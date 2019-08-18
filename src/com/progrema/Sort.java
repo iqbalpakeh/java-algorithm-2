@@ -164,6 +164,27 @@ public class Sort {
     }
 
     // --------------------------------------------------------------------
+    // INSERTION SORT RECURSIVE
+    // --------------------------------------------------------------------
+
+    public static void insertionSortRecursive(@NotNull int[] arr) {
+        int fui = 1;
+        while (fui < arr.length) {
+            call(arr, fui, arr[fui]);
+            fui++;
+        }
+    }
+
+    private static void call(int[] arr, int i, int v) {
+        if (i > 0 && v < arr[i - 1]) {
+            arr[i] = arr[i - 1];
+            call(arr, i - 1, v);
+        } else {
+            arr[i] = v;
+        }
+    }
+
+    // --------------------------------------------------------------------
     // BUBBLE SORT
     // --------------------------------------------------------------------
 
