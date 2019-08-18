@@ -42,6 +42,12 @@ public class Main {
         mergeSort(arr);
         show("sorted  ", arr);
 
+        System.out.println("\nMerge Sort (desc)");
+        copyArr(arrInit, arr);
+        show("unsorted", arr);
+        mergeSortDesc(arr);
+        show("sorted  ", arr);
+
         System.out.println("\nQuick Sort");
         copyArr(arrInit, arr);
         show("unsorted", arr);

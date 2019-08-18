@@ -5,7 +5,7 @@ import com.sun.istack.internal.NotNull;
 public class Sort {
 
     // --------------------------------------------------------------------
-    // COUNTING SORT
+    // COUNTING SORT (?? not fully tested ??)
     // --------------------------------------------------------------------
 
     public static void countingSort(int[] arr, int min, int max) {
@@ -57,6 +57,42 @@ public class Sort {
         }
         swap(arr, start, j);
         return j;
+    }
+
+    // --------------------------------------------------------------------
+    // MERGE SORT DESCENDING ORDER
+    // --------------------------------------------------------------------
+
+    public static void mergeSortDesc(int[] arr) {
+        sortDesc(arr, 0, arr.length - 1);
+    }
+
+    private static void sortDesc(int[] arr, int start, int end) {
+        if (start == end) {
+            return;
+        }
+        int mid = start + (end - start) / 2;
+        sortDesc(arr, start, mid);
+        sortDesc(arr, mid + 1, end);
+        mergeDesc(arr, start, mid, end);
+    }
+
+    private static void mergeDesc(int[] arr, int start, int mid, int end) {
+        int i = start;
+        int j = mid + 1;
+        int[] buffer = new int[end - start + 1];
+        for (int k = 0; k < buffer.length; k++) {
+            if (i > mid) {
+                buffer[k] = arr[j++];
+            } else if (j > end) {
+                buffer[k] = arr[i++];
+            } else if (arr[i] > arr[j]) {
+                buffer[k] = arr[i++];
+            } else {
+                buffer[k] = arr[j++];
+            }
+        }
+        System.arraycopy(buffer, 0, arr, start, buffer.length);
     }
 
     // --------------------------------------------------------------------
