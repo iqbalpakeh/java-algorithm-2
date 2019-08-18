@@ -33,7 +33,7 @@ public class Main {
         System.out.println("\nInsertion Sort Recursively");
         copyArr(arrInit, arr);
         show("unsorted", arr);
-        insertionSort(arr);
+        insertionSortRecursive(arr);
         show("sorted  ", arr);
 
         System.out.println("\nShell Sort");

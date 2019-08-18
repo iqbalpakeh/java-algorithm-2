@@ -168,17 +168,20 @@ public class Sort {
     // --------------------------------------------------------------------
 
     public static void insertionSortRecursive(@NotNull int[] arr) {
-        int fui = 1;
-        while (fui < arr.length) {
-            call(arr, fui, arr[fui]);
-            fui++;
+        insertionSortRecursive(arr, 1);
+    }
+
+    private static void insertionSortRecursive(int[] arr, int fui) {
+        if (fui < arr.length) {
+            insertElement(arr, fui, arr[fui]);
+            insertionSortRecursive(arr, ++fui);
         }
     }
 
-    private static void call(int[] arr, int i, int v) {
+    private static void insertElement(int[] arr, int i, int v) {
         if (i > 0 && v < arr[i - 1]) {
             arr[i] = arr[i - 1];
-            call(arr, i - 1, v);
+            insertElement(arr, i - 1, v);
         } else {
             arr[i] = v;
         }
