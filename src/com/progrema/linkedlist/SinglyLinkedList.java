@@ -1,6 +1,6 @@
-package com.progrema;
+package com.progrema.linkedlist;
 
-public class LinkedList {
+public class SinglyLinkedList {
 
     // --------------------------------------------------------------------
     // TEST SECTION
