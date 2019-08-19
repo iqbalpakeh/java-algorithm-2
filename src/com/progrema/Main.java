@@ -1,12 +1,12 @@
 package com.progrema;
 
-import com.progrema.linkedlist.SinglyLinkedList;
+import com.progrema.linkedlist.DoublyLinkedList;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        SinglyLinkedList.test();
+        DoublyLinkedList.test();
 
     }
 

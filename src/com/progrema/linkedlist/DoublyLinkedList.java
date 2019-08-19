@@ -7,26 +7,22 @@ public class DoublyLinkedList {
     // --------------------------------------------------------------------
 
     public static void test() {
-
         EmployeeList list = new EmployeeList();
 
-        System.out.println("size: " + list.getSize());
-
-        list.add(new Employee("Iqbal", "Pakeh", 123));
-        list.add(new Employee("John", "Doe", 456));
-        list.add(new Employee("Hanifah", "Widiastuti", 456));
-        list.add(new Employee("Aziza", "Ayunindya", 456));
+        list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
         list.print();
+        list.printHead();
+        list.printTail();
 
-        System.out.println("size: " + list.getSize());
-
-        list.removeFirst();
+        list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
         list.print();
-        System.out.println("size: " + list.getSize());
+        list.printHead();
+        list.printTail();
 
-        list.removeLast();
+        list.addToFirst(new Employee("Aziza", "Ayunindya", 456));
         list.print();
-        System.out.println("size: " + list.getSize());
+        list.printHead();
+        list.printTail();
     }
 
     // --------------------------------------------------------------------
@@ -36,38 +32,59 @@ public class DoublyLinkedList {
     private static class EmployeeList {
 
         private EmployeeNode head;
+        private EmployeeNode tail;
         private int size;
 
-        public void add(Employee employee) {
-            EmployeeNode oldHead = head;
-            head = new EmployeeNode(employee);
-            head.setNext(oldHead);
+        public void addToFirst(Employee employee) {
+            if (size == 0) {
+                head = new EmployeeNode(employee);
+                tail = head;
+            } else {
+                EmployeeNode oldHead = head;
+                head = new EmployeeNode(employee);
+                head.setNext(oldHead);
+                EmployeeNode oldTail = tail;
+                tail.setPrev(oldTail);
+            }
             size++;
         }
 
+        public void addToEnd(Employee employee) {
+            //    ?
+        }
+
         public void removeFirst() {
-            EmployeeNode oldHead = head;
-            head = head.getNext();
-            oldHead.setNext(null);
-            size--;
+            // EmployeeNode oldHead = head;
+            // head = head.getNext();
+            // oldHead.setNext(null);
+            // size--;
         }
 
         public void removeLast() {
-            EmployeeNode current = head;
-            while (current.getNext().getNext() != null) {
-                current = current.getNext();
-            }
-            current.setNext(null);
-            size--;
+            // EmployeeNode current = head;
+            // while (current.getNext().getNext() != null) {
+            //     current = current.getNext();
+            // }
+            // current.setNext(null);
+            // size--;
         }
 
         public void print() {
             EmployeeNode current = head;
             while (current != null) {
-                System.out.print(current.employee + " --> ");
+                System.out.print(current.employee + " <--> ");
                 current = current.getNext();
             }
             System.out.println("NULL");
+            System.out.println("SIZE: " + size);
+        }
+
+        public void printHead() {
+            System.out.println("HEAD --> " + head.employee);
+        }
+
+        public void printTail() {
+            System.out.println("TAIL --> " + tail.employee);
         }
 
         public int getSize() {
@@ -84,6 +101,7 @@ public class DoublyLinkedList {
 
         private Employee employee;
         private EmployeeNode next;
+        private EmployeeNode prev;
 
         public EmployeeNode(Employee employee) {
             this.employee = employee;
@@ -95,6 +113,14 @@ public class DoublyLinkedList {
 
         public void setNext(EmployeeNode next) {
             this.next = next;
+        }
+
+        public EmployeeNode getPrev() {
+            return prev;
+        }
+
+        public void setPrev(EmployeeNode prev) {
+            this.prev = prev;
         }
     }
 
