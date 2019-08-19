@@ -2,6 +2,10 @@ package com.progrema;
 
 public class LinkedList {
 
+    // --------------------------------------------------------------------
+    // TEST SECTION
+    // --------------------------------------------------------------------
+
     public static void test() {
 
         EmployeeList list = new EmployeeList();
@@ -13,30 +17,39 @@ public class LinkedList {
         list.add(new Employee("Hanifah", "Widiastuti", 456));
         list.print();
 
+        list.remove();
+        list.print();
+
         System.out.print("size: " + list.getSize());
     }
 
-    static class EmployeeList {
+    // --------------------------------------------------------------------
+    // LIST
+    // --------------------------------------------------------------------
+
+    private static class EmployeeList {
 
         private EmployeeNode head;
         private int size;
 
-
         public void add(Employee employee) {
-
             EmployeeNode oldHead = head;
-
             head = new EmployeeNode(employee);
             head.setNext(oldHead);
-
             size++;
+        }
+
+        public void remove() {
+            EmployeeNode oldHead = head;
+            head = head.getNext();
+            oldHead.setNext(null);
         }
 
         public void print() {
             EmployeeNode current = head;
             while (current != null) {
                 System.out.print(current.employee + " --> ");
-                current = current.next;
+                current = current.getNext();
             }
             System.out.println("NULL");
         }
@@ -47,7 +60,11 @@ public class LinkedList {
 
     }
 
-    static class EmployeeNode {
+    // --------------------------------------------------------------------
+    // NODE
+    // --------------------------------------------------------------------
+
+    private static class EmployeeNode {
 
         private Employee employee;
         private EmployeeNode next;
@@ -65,7 +82,11 @@ public class LinkedList {
         }
     }
 
-    static class Employee {
+    // --------------------------------------------------------------------
+    // OBJECT
+    // --------------------------------------------------------------------
+
+    private static class Employee {
 
         private String firstName;
         private String lastName;
@@ -77,30 +98,6 @@ public class LinkedList {
             this.id = id;
         }
 
-        public String getFirstName() {
-            return firstName;
-        }
-
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
-        }
-
-        public String getLastName() {
-            return lastName;
-        }
-
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
         @Override
         public String toString() {
             return "Employee{" +
@@ -109,7 +106,6 @@ public class LinkedList {
                     ", id=" + id +
                     '}';
         }
-
     }
 
 }
