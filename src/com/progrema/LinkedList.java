@@ -15,13 +15,17 @@ public class LinkedList {
         list.add(new Employee("Iqbal", "Pakeh", 123));
         list.add(new Employee("John", "Doe", 456));
         list.add(new Employee("Hanifah", "Widiastuti", 456));
+        list.add(new Employee("Aziza", "Ayunindya", 456));
         list.print();
 
         System.out.println("size: " + list.getSize());
 
-        list.remove();
+        list.removeFirst();
         list.print();
+        System.out.println("size: " + list.getSize());
 
+        list.removeLast();
+        list.print();
         System.out.println("size: " + list.getSize());
     }
 
@@ -41,10 +45,19 @@ public class LinkedList {
             size++;
         }
 
-        public void remove() {
+        public void removeFirst() {
             EmployeeNode oldHead = head;
             head = head.getNext();
             oldHead.setNext(null);
+            size--;
+        }
+
+        public void removeLast() {
+            EmployeeNode current = head;
+            while (current.getNext().getNext() != null) {
+                current = current.getNext();
+            }
+            current.setNext(null);
             size--;
         }
 
