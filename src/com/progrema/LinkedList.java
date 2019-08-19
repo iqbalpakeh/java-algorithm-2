@@ -17,10 +17,12 @@ public class LinkedList {
         list.add(new Employee("Hanifah", "Widiastuti", 456));
         list.print();
 
+        System.out.println("size: " + list.getSize());
+
         list.remove();
         list.print();
 
-        System.out.print("size: " + list.getSize());
+        System.out.println("size: " + list.getSize());
     }
 
     // --------------------------------------------------------------------
@@ -43,6 +45,7 @@ public class LinkedList {
             EmployeeNode oldHead = head;
             head = head.getNext();
             oldHead.setNext(null);
+            size--;
         }
 
         public void print() {
