@@ -10,19 +10,15 @@ public class DoublyLinkedList {
         EmployeeList list = new EmployeeList();
 
         list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
-        // list.print();
-        // list.printHead();
-        // list.printTail();
+        list.printFromHead();
+        list.printFromEnd();
 
         list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-        // list.print();
-        // list.printHead();
-        // list.printTail();
+        list.printFromHead();
+        list.printFromEnd();
 
         list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
-        // list.print();
-        // list.printHead();
-        // list.printTail();
+        list.printFromHead();
         list.printFromEnd();
 
         // list.addToEnd(new Employee("Safiya", "Salsabila", 789));
@@ -50,8 +46,10 @@ public class DoublyLinkedList {
                 EmployeeNode oldHead = head;
                 head = new EmployeeNode(employee);
                 head.setNext(oldHead);
-                // EmployeeNode oldTail = tail;
-                // tail.setPrev(oldTail.getPrev());
+                oldHead.setPrev(head);
+                if (tail.getPrev() == null) {
+                    tail.setPrev(head);
+                }
             }
             size++;
         }
@@ -86,6 +84,7 @@ public class DoublyLinkedList {
 
         public void printFromHead() {
             EmployeeNode current = head;
+            System.out.print("HEAD --> ");
             while (current != null) {
                 System.out.print(current.employee + " <--> ");
                 current = current.getNext();
@@ -96,6 +95,7 @@ public class DoublyLinkedList {
 
         public void printFromEnd() {
             EmployeeNode current = tail;
+            System.out.print("TAIL --> ");
             while (current != null) {
                 System.out.print(current.employee + " <--> ");
                 current = current.getPrev();
@@ -167,7 +167,7 @@ public class DoublyLinkedList {
 
         @Override
         public String toString() {
-            return "Employee{" +
+            return "{" +
                     "firstName='" + firstName + '\'' +
                     ", lastName='" + lastName + '\'' +
                     ", id=" + id +
