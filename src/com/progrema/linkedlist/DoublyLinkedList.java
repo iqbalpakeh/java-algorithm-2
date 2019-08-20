@@ -10,19 +10,26 @@ public class DoublyLinkedList {
         EmployeeList list = new EmployeeList();
 
         list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
-        list.print();
-        list.printHead();
-        list.printTail();
+        // list.print();
+        // list.printHead();
+        // list.printTail();
 
         list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-        list.print();
-        list.printHead();
-        list.printTail();
+        // list.print();
+        // list.printHead();
+        // list.printTail();
 
-        list.addToFirst(new Employee("Aziza", "Ayunindya", 456));
-        list.print();
-        list.printHead();
-        list.printTail();
+        list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
+        // list.print();
+        // list.printHead();
+        // list.printTail();
+        list.printFromEnd();
+
+        // list.addToEnd(new Employee("Safiya", "Salsabila", 789));
+        // list.printFromHead();
+        // list.printHead();
+        // list.printTail();
+        // list.printFromEnd();
     }
 
     // --------------------------------------------------------------------
@@ -43,14 +50,22 @@ public class DoublyLinkedList {
                 EmployeeNode oldHead = head;
                 head = new EmployeeNode(employee);
                 head.setNext(oldHead);
-                EmployeeNode oldTail = tail;
-                tail.setPrev(oldTail);
+                // EmployeeNode oldTail = tail;
+                // tail.setPrev(oldTail.getPrev());
             }
             size++;
         }
 
         public void addToEnd(Employee employee) {
-            //    ?
+            if (size == 0) {
+                head = new EmployeeNode(employee);
+                tail = head;
+            } else {
+                EmployeeNode oldTail = tail;
+                tail = new EmployeeNode(employee);
+                tail.setPrev(oldTail);
+                oldTail.setNext(tail);
+            }
         }
 
         public void removeFirst() {
@@ -69,11 +84,21 @@ public class DoublyLinkedList {
             // size--;
         }
 
-        public void print() {
+        public void printFromHead() {
             EmployeeNode current = head;
             while (current != null) {
                 System.out.print(current.employee + " <--> ");
                 current = current.getNext();
+            }
+            System.out.println("NULL");
+            System.out.println("SIZE: " + size);
+        }
+
+        public void printFromEnd() {
+            EmployeeNode current = tail;
+            while (current != null) {
+                System.out.print(current.employee + " <--> ");
+                current = current.getPrev();
             }
             System.out.println("NULL");
             System.out.println("SIZE: " + size);
