@@ -1,4 +1,4 @@
-package com.progrema;
+package com.progrema.sort;
 
 import com.sun.istack.internal.NotNull;
 
