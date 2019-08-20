@@ -7,78 +7,78 @@ public class DoublyLinkedList {
     // --------------------------------------------------------------------
 
     public static void test() {
-        //
-        // {
-        //     EmployeeList list = new EmployeeList();
-        //
-        //     list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.addToEnd(new Employee("Safiya", "Salsabila", 789));
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        // }
-        //
-        // {
-        //     EmployeeList list = new EmployeeList();
-        //
-        //     list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
-        //     list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-        //     list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeFirst();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeFirst();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeFirst();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeFirst();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        // }
-        //
-        // {
-        //     EmployeeList list = new EmployeeList();
-        //
-        //     list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
-        //     list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-        //     list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeLast();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeLast();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeLast();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        //
-        //     list.removeLast();
-        //     list.printFromHead();
-        //     list.printFromEnd();
-        // }
+
+        {
+            EmployeeList list = new EmployeeList();
+
+            list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.addToEnd(new Employee("Safiya", "Salsabila", 789));
+            list.printFromHead();
+            list.printFromEnd();
+        }
+
+        {
+            EmployeeList list = new EmployeeList();
+
+            list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
+            list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
+            list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeFirst();
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeFirst();
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeFirst();
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeFirst();
+            list.printFromHead();
+            list.printFromEnd();
+        }
+
+        {
+            EmployeeList list = new EmployeeList();
+
+            list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
+            list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
+            list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeLast();
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeLast();
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeLast();
+            list.printFromHead();
+            list.printFromEnd();
+
+            list.removeLast();
+            list.printFromHead();
+            list.printFromEnd();
+        }
 
         {
             EmployeeList list = new EmployeeList();
