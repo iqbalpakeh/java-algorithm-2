@@ -7,75 +7,95 @@ public class DoublyLinkedList {
     // --------------------------------------------------------------------
 
     public static void test() {
+        //
+        // {
+        //     EmployeeList list = new EmployeeList();
+        //
+        //     list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.addToEnd(new Employee("Safiya", "Salsabila", 789));
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        // }
+        //
+        // {
+        //     EmployeeList list = new EmployeeList();
+        //
+        //     list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
+        //     list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
+        //     list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeFirst();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeFirst();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeFirst();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeFirst();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        // }
+        //
+        // {
+        //     EmployeeList list = new EmployeeList();
+        //
+        //     list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
+        //     list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
+        //     list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeLast();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeLast();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeLast();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        //
+        //     list.removeLast();
+        //     list.printFromHead();
+        //     list.printFromEnd();
+        // }
 
         {
             EmployeeList list = new EmployeeList();
+            Employee e1 = new Employee("1", "1", 1);
+            Employee e2 = new Employee("2", "2", 2);
+            Employee e3 = new Employee("3", "3", 3);
+            Employee e4 = new Employee("4", "4", 4);
+            Employee e10 = new Employee("10", "10", 10);
 
-            list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
+            list.addToFirst(e1);
+            list.addToFirst(e2);
+            list.addToFirst(e3);
+            list.addToFirst(e4);
             list.printFromHead();
             list.printFromEnd();
 
-            list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.addToEnd(new Employee("Safiya", "Salsabila", 789));
-            list.printFromHead();
-            list.printFromEnd();
-        }
-
-        {
-            EmployeeList list = new EmployeeList();
-
-            list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
-            list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-            list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeFirst();
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeFirst();
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeFirst();
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeFirst();
-            list.printFromHead();
-            list.printFromEnd();
-        }
-
-        {
-            EmployeeList list = new EmployeeList();
-
-            list.addToFirst(new Employee("Iqbal", "Pakeh", 123));
-            list.addToFirst(new Employee("Hanifah", "Widiastuti", 456));
-            list.addToFirst(new Employee("Aziza", "Ayunindya", 234));
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeLast();
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeLast();
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeLast();
-            list.printFromHead();
-            list.printFromEnd();
-
-            list.removeLast();
+            list.addBefore(e3, e10);
             list.printFromHead();
             list.printFromEnd();
         }
@@ -150,6 +170,20 @@ public class DoublyLinkedList {
             size--;
         }
 
+        public void addBefore(Employee target, Employee newEmployee) {
+            EmployeeNode current = head;
+            while (!current.getEmployee().equals(target)) {
+                current = current.getNext();
+            }
+            EmployeeNode oldBeforeCurrent = current.getPrev();
+            EmployeeNode newEmployeeNode = new EmployeeNode(newEmployee);
+            oldBeforeCurrent.setNext(newEmployeeNode);
+            current.setPrev(newEmployeeNode);
+            newEmployeeNode.setNext(current);
+            newEmployeeNode.setPrev(oldBeforeCurrent);
+            size++;
+        }
+
         public void printFromHead() {
             EmployeeNode current = head;
             System.out.print("HEAD --> ");
@@ -216,6 +250,10 @@ public class DoublyLinkedList {
 
         public void setPrev(EmployeeNode prev) {
             this.prev = prev;
+        }
+
+        public Employee getEmployee() {
+            return employee;
         }
     }
 
