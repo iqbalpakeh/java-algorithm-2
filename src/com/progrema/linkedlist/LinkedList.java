@@ -1,16 +1,16 @@
 package com.progrema.linkedlist;
 
-public interface LinkedList {
+public interface LinkedList<T> {
 
-    void addToHead(Employee employee);
+    void addToHead(T object);
 
-    void addToTail(Employee employee);
+    void addToTail(T object);
 
     void removeHead();
 
     void removeTail();
 
-    void addBefore(Employee newEmployee, Employee target);
+    void addBefore(T newObject, T targetObject);
 
     void printFromHead();
 

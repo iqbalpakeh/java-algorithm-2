@@ -106,7 +106,7 @@ public class DoublyLinkedList {
     // LIST
     // --------------------------------------------------------------------
 
-    private static class EmployeeList implements LinkedList {
+    private static class EmployeeList implements LinkedList<Employee> {
 
         private EmployeeNode head;
         private EmployeeNode tail;
@@ -264,6 +264,32 @@ public class DoublyLinkedList {
 
         public Employee getEmployee() {
             return employee;
+        }
+    }
+
+    // --------------------------------------------------------------------
+    // OBJECT
+    // --------------------------------------------------------------------
+
+    private static class Employee {
+
+        private String firstName;
+        private String lastName;
+        private int id;
+
+        public Employee(String firstName, String lastName, int id) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.id = id;
+        }
+
+        @Override
+        public String toString() {
+            return "Employee{" +
+                    "firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", id=" + id +
+                    '}';
         }
     }
 
