@@ -10,10 +10,16 @@ public class SortedLinkedList {
 
         {
             List list = new List();
-            list.addToHead(1);
-            list.addToHead(2);
-            list.addToHead(3);
+            list.addToHead(10);
+            list.addToHead(9);
+            list.addToHead(8);
+            list.addToHead(7);
+            list.addToHead(6);
+            list.addToHead(5);
             list.addToHead(4);
+            list.addToHead(3);
+            list.addToHead(2);
+            list.addToHead(1);
             list.printFromHead();
         }
     }
@@ -29,18 +35,22 @@ public class SortedLinkedList {
 
         @Override
         public void addToHead(Integer object) {
+            Node current = head;
             if (size == 0) {
                 head = new Node(object);
-                size++;
-                return;
-            }
-            Node current = head;
-            while (current.val < object) {
-                current = current.next;
-            }
-            if (current.next == null) {
-                current.next = new Node(object);
+            } else if (size == 1) {
+                if (current.val > object) {
+                    Node oldCurrent = current;
+                    current = new Node(object);
+                    current.next = oldCurrent;
+                    head = current;
+                } else {
+                    current.next = new Node(object);
+                }
             } else {
+                while (current.next != null && current.next.val < object) {
+                    current = current.next;
+                }
                 Node oldCurrent = current;
                 current = new Node(object);
                 current.next = oldCurrent.next;
@@ -73,7 +83,7 @@ public class SortedLinkedList {
         public void printFromHead() {
             Node current = head;
             System.out.print("HEAD -> ");
-            while (current.next != null) {
+            while (current != null) {
                 System.out.print(current.val + " -> ");
                 current = current.next;
             }
