@@ -1,15 +1,14 @@
 package com.progrema;
 
-import com.progrema.linkedlist.DoublyLinkedList;
-import com.progrema.sort.Sort;
+import com.progrema.linkedlist.SortedLinkedList;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Sort.test();
-        DoublyLinkedList.test();
-        // SortedLinkedList.test();
+        // Sort.test();
+        // DoublyLinkedList.test();
+        SortedLinkedList.test();
     }
 
 }

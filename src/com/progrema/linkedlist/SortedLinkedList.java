@@ -24,16 +24,29 @@ public class SortedLinkedList {
 
     private static class List implements LinkedList<Integer> {
 
-        private int[] arr;
+        private Node head;
         private int size;
-
-        public List() {
-
-        }
 
         @Override
         public void addToHead(Integer object) {
-
+            if (size == 0) {
+                head = new Node(object);
+                size++;
+                return;
+            }
+            Node current = head;
+            while (current.val < object) {
+                current = current.next;
+            }
+            if (current.next == null) {
+                current.next = new Node(object);
+            } else {
+                Node oldCurrent = current;
+                current = new Node(object);
+                current.next = oldCurrent.next;
+                oldCurrent.next = current;
+            }
+            size++;
         }
 
         @Override
@@ -58,13 +71,14 @@ public class SortedLinkedList {
 
         @Override
         public void printFromHead() {
-            System.out.print("HEAD --> ");
-            for (int i = 0; i < arr.length; i++) {
-                System.out.print(arr[i] + " <--> ");
+            Node current = head;
+            System.out.print("HEAD -> ");
+            while (current.next != null) {
+                System.out.print(current.val + " -> ");
+                current = current.next;
             }
-            System.out.println("NULL");
-            System.out.println("SIZE: " + getSize());
-            System.out.println();
+            System.out.print("NULL");
+            System.out.println(", SIZE = " + getSize());
         }
 
         @Override
@@ -87,9 +101,6 @@ public class SortedLinkedList {
             return size;
         }
 
-        private void resize() {
-            // todo
-        }
     }
 
     // --------------------------------------------------------------------
@@ -97,9 +108,13 @@ public class SortedLinkedList {
     // --------------------------------------------------------------------
 
     private static class Node {
+
         public int val;
         public Node next;
-        public Node prev;
+
+        public Node(int data) {
+            this.val = data;
+        }
     }
 
 }
