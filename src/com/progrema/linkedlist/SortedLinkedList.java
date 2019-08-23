@@ -9,16 +9,25 @@ public class SortedLinkedList {
     public static void test() {
 
         {
+            // List list = new List();
+            // list.addToHead(10);
+            // list.addToHead(9);
+            // list.addToHead(8);
+            // list.addToHead(7);
+            // list.addToHead(6);
+            // list.addToHead(5);
+            // list.addToHead(4);
+            // list.addToHead(3);
+            // list.addToHead(2);
+            // list.addToHead(1);
+            // list.printFromHead();
+
             List list = new List();
-            list.addToHead(10);
-            list.addToHead(9);
-            list.addToHead(8);
-            list.addToHead(7);
-            list.addToHead(6);
-            list.addToHead(5);
-            list.addToHead(4);
             list.addToHead(3);
+            list.addToHead(5);
             list.addToHead(2);
+            list.addToHead(8);
+            list.addToHead(4);
             list.addToHead(1);
             list.printFromHead();
         }
@@ -35,26 +44,15 @@ public class SortedLinkedList {
 
         @Override
         public void addToHead(Integer object) {
-            Node current = head;
             if (size == 0) {
                 head = new Node(object);
-            } else if (size == 1) {
-                if (current.val > object) {
-                    Node oldCurrent = current;
-                    current = new Node(object);
-                    current.next = oldCurrent;
-                    head = current;
-                } else {
-                    current.next = new Node(object);
-                }
             } else {
-                while (current.next != null && current.next.val < object) {
-                    current = current.next;
+                while (head != null && head.val < object) {
+                    head = head.next;
                 }
-                Node oldCurrent = current;
-                current = new Node(object);
-                current.next = oldCurrent.next;
-                oldCurrent.next = current;
+                Node newNode = new Node(object);
+                newNode.next = head;
+                head = newNode;
             }
             size++;
         }
