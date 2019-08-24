@@ -13,32 +13,64 @@ public class ArrayStack<T> implements Stack<T> {
 
     public static void test() {
 
-        Stack<Integer> stack = new ArrayStack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
+        {
+            Stack<Integer> stack = new ArrayStack<>();
+            stack.push(1);
+            stack.push(2);
+            stack.push(3);
 
-        System.out.println("peek: " + stack.peek());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
+            System.out.println("peek: " + stack.peek());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("peek: " + stack.peek());
 
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-        stack.push(6);
+            stack.push(1);
+            stack.push(2);
+            stack.push(3);
+            stack.push(4);
+            stack.push(5);
+            stack.push(6);
 
-        System.out.println("peek: " + stack.peek());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
+            System.out.println("peek: " + stack.peek());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("peek: " + stack.peek());
+        }
+
+        {
+            Stack<String> stack = new ArrayStack<>();
+            stack.push("one");
+            stack.push("two");
+            stack.push("three");
+
+            System.out.println("peek: " + stack.peek());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("peek: " + stack.peek());
+        }
+
+        {
+            Stack<Employee> stack = new ArrayStack<>();
+            stack.push(new Employee("Iqbal", "Pakeh", 123));
+            stack.push(new Employee("John", "Doe", 456));
+            stack.push(new Employee("Hanifah", "Widiastuti", 789));
+
+            System.out.println("peek: " + stack.peek());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("pop: " + stack.pop());
+            System.out.println("peek: " + stack.peek());
+        }
 
     }
 
@@ -63,6 +95,9 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public T peek() {
+        if (top == -1) {
+            return null;
+        }
         return arr[top];
     }
 
@@ -80,4 +115,27 @@ public class ArrayStack<T> implements Stack<T> {
         }
         return newArr;
     }
+
+    private static class Employee {
+
+        private String firstName;
+        private String lastName;
+        private int id;
+
+        public Employee(String firstName, String lastName, int id) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.id = id;
+        }
+
+        @Override
+        public String toString() {
+            return "Employee{" +
+                    "firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", id=" + id +
+                    '}';
+        }
+    }
+
 }
