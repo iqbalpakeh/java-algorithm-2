@@ -9,22 +9,22 @@ public class SortedLinkedList {
     public static void test() {
 
         {
-            List list = new List();
-            list.addToHead(10);
-            list.addToHead(9);
-            list.addToHead(8);
-            list.addToHead(7);
-            list.addToHead(6);
-            list.addToHead(5);
-            list.addToHead(4);
-            list.addToHead(3);
-            list.addToHead(2);
-            list.addToHead(1);
-            list.addToHead(7);
-            list.addToHead(13);
-            list.addToHead(15);
-            list.addToHead(17);
-            list.printFromHead();
+            // List list = new List();
+            // list.addToHead(10);
+            // list.addToHead(9);
+            // list.addToHead(8);
+            // list.addToHead(7);
+            // list.addToHead(6);
+            // list.addToHead(5);
+            // list.addToHead(4);
+            // list.addToHead(3);
+            // list.addToHead(2);
+            // list.addToHead(1);
+            // list.addToHead(7);
+            // list.addToHead(13);
+            // list.addToHead(15);
+            // list.addToHead(17);
+            // list.printFromHead();
 
             // List list = new List();
             // list.addToHead(5);
@@ -35,6 +35,13 @@ public class SortedLinkedList {
             // list.addToHead(4); //?
             // list.addToHead(2);
             // list.printFromHead();
+
+            List list = new List();
+            list.addToHead(3);
+            list.addToHead(2);
+            list.addToHead(1);
+            list.addToHead(4);
+            list.printFromHead();
         }
     }
 
