@@ -106,13 +106,12 @@ public class DoublyLinkedList {
     // LIST
     // --------------------------------------------------------------------
 
-    private static class EmployeeList implements LinkedList<Employee> {
+    private static class EmployeeList {
 
         private EmployeeNode head;
         private EmployeeNode tail;
         private int size;
 
-        @Override
         public void addToHead(Employee employee) {
             if (size == 0) {
                 head = new EmployeeNode(employee);
@@ -129,7 +128,6 @@ public class DoublyLinkedList {
             size++;
         }
 
-        @Override
         public void addToTail(Employee employee) {
             if (size == 0) {
                 head = new EmployeeNode(employee);
@@ -146,7 +144,6 @@ public class DoublyLinkedList {
             size++;
         }
 
-        @Override
         public void removeHead() {
             if (size == 0) {
                 return;
@@ -160,7 +157,6 @@ public class DoublyLinkedList {
             size--;
         }
 
-        @Override
         public void removeTail() {
             if (size == 0) {
                 return;
@@ -174,7 +170,6 @@ public class DoublyLinkedList {
             size--;
         }
 
-        @Override
         public void addBefore(Employee newEmployee, Employee target) {
             EmployeeNode current = head;
             while (!current.getEmployee().equals(target)) {
@@ -189,7 +184,6 @@ public class DoublyLinkedList {
             size++;
         }
 
-        @Override
         public void printFromHead() {
             EmployeeNode current = head;
             System.out.print("HEAD --> ");
@@ -202,7 +196,6 @@ public class DoublyLinkedList {
             System.out.println();
         }
 
-        @Override
         public void printFromTail() {
             EmployeeNode current = tail;
             System.out.print("TAIL --> ");
@@ -215,17 +208,14 @@ public class DoublyLinkedList {
             System.out.println();
         }
 
-        @Override
         public void printHead() {
             System.out.println("HEAD --> " + head.employee);
         }
 
-        @Override
         public void printTail() {
             System.out.println("TAIL --> " + tail.employee);
         }
 
-        @Override
         public int getSize() {
             return size;
         }

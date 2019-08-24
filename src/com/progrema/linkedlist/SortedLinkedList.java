@@ -9,27 +9,32 @@ public class SortedLinkedList {
     public static void test() {
 
         {
-            // List list = new List();
-            // list.addToHead(10);
-            // list.addToHead(9);
-            // list.addToHead(8);
-            // list.addToHead(7);
-            // list.addToHead(6);
-            // list.addToHead(5);
-            // list.addToHead(4);
-            // list.addToHead(3);
-            // list.addToHead(2);
-            // list.addToHead(1);
-            // list.printFromHead();
-
             List list = new List();
-            list.addToHead(3);
-            list.addToHead(5);
-            list.addToHead(2);
+            list.addToHead(10);
+            list.addToHead(9);
             list.addToHead(8);
+            list.addToHead(7);
+            list.addToHead(6);
+            list.addToHead(5);
             list.addToHead(4);
+            list.addToHead(3);
+            list.addToHead(2);
             list.addToHead(1);
+            list.addToHead(7);
+            list.addToHead(13);
+            list.addToHead(15);
+            list.addToHead(17);
             list.printFromHead();
+
+            // List list = new List();
+            // list.addToHead(5);
+            // list.addToHead(3);
+            // list.addToHead(1);
+            // list.addToHead(8);
+            // list.addToHead(6); //?
+            // list.addToHead(4); //?
+            // list.addToHead(2);
+            // list.printFromHead();
         }
     }
 
@@ -37,47 +42,42 @@ public class SortedLinkedList {
     // LIST
     // --------------------------------------------------------------------
 
-    private static class List implements LinkedList<Integer> {
+    private static class List {
 
         private Node head;
         private int size;
 
-        @Override
         public void addToHead(Integer object) {
+            Node oldHead = head;
             if (size == 0) {
                 head = new Node(object);
+                size++;
             } else {
-                while (head != null && head.val < object) {
-                    head = head.next;
+                if (head.val > object) {
+                    Node newNode = new Node(object);
+                    newNode.next = head;
+                    head = newNode;
+                    size++;
+                    return;
                 }
+                while (head.next.val < object) {
+                    head = head.next;
+                    if (head.next == null) {
+                        head.next = new Node(object);
+                        head = oldHead;
+                        size++;
+                        return;
+                    }
+                }
+                Node pos = head;
                 Node newNode = new Node(object);
-                newNode.next = head;
-                head = newNode;
+                newNode.next = head.next;
+                pos.next = newNode;
+                head = oldHead;
+                size++;
             }
-            size++;
         }
 
-        @Override
-        public void addToTail(Integer object) {
-
-        }
-
-        @Override
-        public void removeHead() {
-
-        }
-
-        @Override
-        public void removeTail() {
-
-        }
-
-        @Override
-        public void addBefore(Integer newObject, Integer targetObject) {
-
-        }
-
-        @Override
         public void printFromHead() {
             Node current = head;
             System.out.print("HEAD -> ");
@@ -89,22 +89,6 @@ public class SortedLinkedList {
             System.out.println(", SIZE = " + getSize());
         }
 
-        @Override
-        public void printFromTail() {
-
-        }
-
-        @Override
-        public void printHead() {
-
-        }
-
-        @Override
-        public void printTail() {
-
-        }
-
-        @Override
         public int getSize() {
             return size;
         }
