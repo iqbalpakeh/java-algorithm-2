@@ -1,6 +1,6 @@
 package com.progrema;
 
-import com.progrema.stack.ArrayStack;
+import com.progrema.stack.LinkedListStack;
 
 public class Main {
 
@@ -11,7 +11,8 @@ public class Main {
         // DoublyLinkedList.test();
         // SortedLinkedList.test();
 
-        ArrayStack.test();
+        // ArrayStack.test();
+        LinkedListStack.test();
 
     }
 
