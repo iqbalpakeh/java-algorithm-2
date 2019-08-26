@@ -12,7 +12,8 @@ public class Main {
         // SortedLinkedList.test();
 
         // ArrayStack.test();
-        LinkedListStack.test();
+        // LinkedListStack.test();
+        LinkedListStack.testPalindrome();
 
     }
 

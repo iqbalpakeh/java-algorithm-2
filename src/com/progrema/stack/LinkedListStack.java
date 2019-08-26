@@ -8,6 +8,42 @@ public class LinkedListStack<T> implements Stack<T> {
         list = new SinglyLinkedList<>();
     }
 
+    public static void testPalindrome() {
+
+        {
+            char[] word = "racecar".toCharArray();
+            System.out.println("check " + String.valueOf(word) + " : " + isPalindrome(word));
+        }
+
+        {
+            char[] word = "hello".toCharArray();
+            System.out.println("check " + String.valueOf(word) + " : " + isPalindrome(word));
+        }
+
+        {
+            char[] word = "ididdidi".toCharArray();
+            System.out.println("check " + String.valueOf(word) + " : " + isPalindrome(word));
+        }
+
+    }
+
+    public static boolean isPalindrome(char[] word) {
+
+        Stack<Character> left = new LinkedListStack<>();
+        Stack<Character> right = new LinkedListStack<>();
+
+        for (int i = 0; i < word.length; i++) {
+            left.push(word[i]);
+            right.push(word[word.length - 1 - i]);
+        }
+
+        for (int i = 0; i < word.length; i++) {
+            if (left.pop() != right.pop()) return false;
+        }
+
+        return true;
+    }
+
     public static void test() {
 
         {
