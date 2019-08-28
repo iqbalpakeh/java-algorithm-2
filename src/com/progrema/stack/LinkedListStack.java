@@ -29,16 +29,22 @@ public class LinkedListStack<T> implements Stack<T> {
 
     public static boolean isPalindrome(char[] word) {
 
-        Stack<Character> left = new LinkedListStack<>();
-        Stack<Character> right = new LinkedListStack<>();
+        // Stack<Character> left = new LinkedListStack<>();
+        // Stack<Character> right = new LinkedListStack<>();
+        //
+        // for (int i = 0; i < word.length; i++) {
+        //     left.push(word[i]);
+        //     right.push(word[word.length - 1 - i]);
+        // }
+        //
+        // for (int i = 0; i < word.length; i++) {
+        //     if (left.pop() != right.pop()) return false;
+        // }
 
         for (int i = 0; i < word.length; i++) {
-            left.push(word[i]);
-            right.push(word[word.length - 1 - i]);
-        }
-
-        for (int i = 0; i < word.length; i++) {
-            if (left.pop() != right.pop()) return false;
+            if (word[i] != word[word.length - 1 - i]) {
+                return false;
+            }
         }
 
         return true;

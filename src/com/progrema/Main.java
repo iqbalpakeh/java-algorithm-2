@@ -1,6 +1,6 @@
 package com.progrema;
 
-import com.progrema.stack.LinkedListStack;
+import com.progrema.queue.ArrayQueue;
 
 public class Main {
 
@@ -13,7 +13,9 @@ public class Main {
 
         // ArrayStack.test();
         // LinkedListStack.test();
-        LinkedListStack.testPalindrome();
+        // LinkedListStack.testPalindrome();
+
+        ArrayQueue.test();
 
     }
 
