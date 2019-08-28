@@ -51,6 +51,51 @@ public class ArrayQueue<T> implements Queue<T> {
             System.out.println("dequeue: " + queue.dequeue());
             System.out.println("peek: " + queue.peek());
         }
+
+        {
+            Queue<String> queue = new ArrayQueue<>();
+            queue.enqueue("one");
+            queue.enqueue("two");
+            queue.enqueue("three");
+            queue.enqueue("four");
+
+            System.out.println("peek: " + queue.peek());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("peek: " + queue.peek());
+        }
+
+        {
+            Queue<Employee> queue = new ArrayQueue<>();
+            queue.enqueue(new Employee("Iqbal", "Pakeh", 123));
+            queue.enqueue(new Employee("Hanifah", "Widiastuti", 456));
+            queue.enqueue(new Employee("Aziza", "Ayunindya", 789));
+            queue.enqueue(new Employee("Safiya", "Salsabila", 234));
+
+            System.out.println("peek: " + queue.peek());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("peek: " + queue.peek());
+
+            queue.enqueue(new Employee("Iqbal", "Pakeh", 123));
+            queue.enqueue(new Employee("Hanifah", "Widiastuti", 456));
+            queue.enqueue(new Employee("Aziza", "Ayunindya", 789));
+            queue.enqueue(new Employee("Safiya", "Salsabila", 234));
+
+            System.out.println("peek: " + queue.peek());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("peek: " + queue.peek());
+        }
     }
 
     @Override
@@ -94,14 +139,35 @@ public class ArrayQueue<T> implements Queue<T> {
         return size;
     }
 
+    @SuppressWarnings("unchecked")
     private T[] resize(int newSize) {
         T[] newBuff = (T[]) new Object[newSize];
         if (newSize > buff.length) {
-            for (int i = 0; i < buff.length; i++) {
-                newBuff[i] = buff[i];
-            }
+            System.arraycopy(buff, 0, newBuff, 0, buff.length);
         }
         return newBuff;
+    }
+
+    private static class Employee {
+
+        private String firstName;
+        private String lastName;
+        private int id;
+
+        public Employee(String firstName, String lastName, int id) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.id = id;
+        }
+
+        @Override
+        public String toString() {
+            return "Employee{" +
+                    "firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", id=" + id +
+                    '}';
+        }
     }
 
 }
