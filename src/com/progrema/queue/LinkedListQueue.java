@@ -15,10 +15,10 @@ public class LinkedListQueue<T> implements Queue<T> {
             queue.enqueue(4);
 
             System.out.println("peek: " + queue.peek());
-            System.out.println("dequeue: " + queue.dequeue());
-            System.out.println("dequeue: " + queue.dequeue());
-            System.out.println("dequeue: " + queue.dequeue());
-            System.out.println("dequeue: " + queue.dequeue());
+            System.out.println("dequeue: " + check(queue.dequeue(), 1));
+            System.out.println("dequeue: " + check(queue.dequeue(), 2));
+            System.out.println("dequeue: " + check(queue.dequeue(), 3));
+            System.out.println("dequeue: " + check(queue.dequeue(), 4));
             System.out.println("dequeue: " + queue.dequeue());
             System.out.println("peek: " + queue.peek());
 
@@ -83,6 +83,14 @@ public class LinkedListQueue<T> implements Queue<T> {
             System.out.println("dequeue: " + queue.dequeue());
             System.out.println("dequeue: " + queue.dequeue());
             System.out.println("peek: " + queue.peek());
+        }
+    }
+
+    private static String check(int data, int expected) {
+        if (data == expected) {
+            return "PASS, return = " + data;
+        } else {
+            return "ERROR, data = " + data + " but expected = " + expected;
         }
     }
 
