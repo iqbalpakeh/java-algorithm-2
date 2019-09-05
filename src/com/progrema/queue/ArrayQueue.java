@@ -2,8 +2,6 @@ package com.progrema.queue;
 
 public class ArrayQueue<T> implements Queue<T> {
 
-    // todo: to implement circular queue!!
-
     private final int INIT_SIZE = 4;
 
     private T[] buff;

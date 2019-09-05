@@ -1,6 +1,6 @@
 package com.progrema;
 
-import com.progrema.queue.LinkedListQueue;
+import com.progrema.queue.CircularArrayQueue;
 
 public class Main {
 
@@ -16,8 +16,8 @@ public class Main {
         // LinkedListStack.testPalindrome();
 
         // ArrayQueue.test();
-        LinkedListQueue.test();
-
+        // LinkedListQueue.test();
+        CircularArrayQueue.test();
     }
 
 }
