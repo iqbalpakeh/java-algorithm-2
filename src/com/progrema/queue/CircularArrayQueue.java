@@ -31,6 +31,20 @@ public class CircularArrayQueue<T> implements Queue<T> {
             System.out.println("dequeue: " + check(queue.dequeue(), 3));
             queue.enqueue(5);
             queue.enqueue(6);
+            queue.enqueue(7);
+            queue.enqueue(8); // buffer resize here!
+            System.out.println("dequeue: " + check(queue.dequeue(), 4));
+            queue.enqueue(9);
+            queue.enqueue(10);
+            queue.enqueue(11);
+            System.out.println("dequeue: " + check(queue.dequeue(), 4));
+            System.out.println("dequeue: " + check(queue.dequeue(), 5));
+            System.out.println("dequeue: " + check(queue.dequeue(), 6));
+            System.out.println("dequeue: " + check(queue.dequeue(), 7));
+            System.out.println("dequeue: " + check(queue.dequeue(), 8));
+            System.out.println("dequeue: " + check(queue.dequeue(), 9));
+            System.out.println("dequeue: " + check(queue.dequeue(), 10));
+            System.out.println("dequeue: " + check(queue.dequeue(), 11));
         }
     }
 
@@ -48,8 +62,7 @@ public class CircularArrayQueue<T> implements Queue<T> {
             // set to position 0 because first and last may not be
             // at position 0 when it's empty.
             buff = resize(INIT_SIZE);
-            first = 0;
-            last = 0;
+            last = first;
             buff[last] = data;
             size++;
             return;
@@ -57,13 +70,21 @@ public class CircularArrayQueue<T> implements Queue<T> {
         if (size() == buff.length) {
             buff = resize(buff.length * 2);
         }
-        buff[++last % buff.length] = data;
+        last = (last + 1) % buff.length;
+        buff[last] = data;
         size++;
     }
 
     @Override
     public T dequeue() {
-        return null;
+        if (size() == 0) {
+            return null;
+        }
+        size--;
+        T removedData = buff[first];
+        buff[first] = null;
+        first = (first + 1) % buff.length;
+        return removedData;
     }
 
     @Override
@@ -82,9 +103,12 @@ public class CircularArrayQueue<T> implements Queue<T> {
     @SuppressWarnings("unchecked")
     private T[] resize(int newSize) {
         T[] newBuff = (T[]) new Object[newSize];
-        for (int i = 0; i < buff.length; i++) {
+        int i = 0;
+        for (; i < buff.length; i++) {
             newBuff[i] = buff[(first + i) % buff.length];
         }
+        first = 0;
+        last = ++i;
         return newBuff;
     }
 }
