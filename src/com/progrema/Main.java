@@ -1,5 +1,6 @@
 package com.progrema;
 
+import com.progrema.hashtable.LinearProbing;
 import com.progrema.queue.CircularArrayQueue;
 import com.progrema.queue.Queue;
 import com.progrema.stack.LinkedListStack;
@@ -21,8 +22,10 @@ public class Main {
         // ArrayQueue.test();
         // LinkedListQueue.test();
         // CircularArrayQueue.test();
+        // testPalindrome();
 
-        testPalindrome();
+        LinearProbing.test();
+
     }
 
     public static void testPalindrome() {
