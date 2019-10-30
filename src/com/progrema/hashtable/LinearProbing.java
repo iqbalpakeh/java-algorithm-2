@@ -76,6 +76,16 @@ public class LinearProbing<K, V> implements HashTable<K, V> {
 
     @Override
     public void remove(K key) {
+        int index = hash(key);
+        while (arr[index] != null && arr[index].k != key) {
+            arr[index] = null;
+        }
+        // reharse the remaining pair
+        index = (index + 1) % size;
+        while (arr[index] != null) {
+            index = (index + 1) % size;
+            put((K) arr[index].k, (V) arr[index].v);
+        }
     }
 
     private int hash(K key) {
@@ -90,6 +100,12 @@ public class LinearProbing<K, V> implements HashTable<K, V> {
         return newArr;
     }
 
+    /**
+     * Internal class to hold K, V together
+     *
+     * @param <K> Key
+     * @param <V> Value
+     */
     public static class Pair<K, V> {
 
         K k;
