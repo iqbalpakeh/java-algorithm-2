@@ -10,25 +10,40 @@ public class LinearProbing<K, V> implements HashTable<K, V> {
     private int count;
 
     private int size = INIT_SIZE;
-    private V[] arr;
+    private Pair[] arr;
+
+    public LinearProbing() {
+        arr = new Pair[size];
+    }
 
     public static void test() {
 
         HashTable<Integer, String> ht = new LinearProbing<>();
 
-        // ht.put(1, "One");
-        // ht.put(2, "Two");
+        ht.put(1, "One");
+        ht.put(2, "Two");
         ht.put(3, "Three");
         ht.put(4, "Four");
-        // ht.put(5, "Five");
-        ht.put(23, "TwentyThree"); // collision with 3
+        ht.put(5, "Five");
+        ht.put(23, "TwentyThree"); // collision with 3 and located at slot 6
+        ht.put(6, "Six"); // collision with 23 and located at slot 7
 
-        System.out.print(ht.get(5));
+        check(ht.get(1), "One");
+        check(ht.get(2), "Two");
+        check(ht.get(3), "Three");
+        check(ht.get(4), "Four");
+        check(ht.get(5), "Five");
+        check(ht.get(23), "TwentyThree");
+        check(ht.get(6), "Six");
 
     }
 
-    public LinearProbing() {
-        arr = (V[]) new Object[size];
+    public static void check(String actual, String expected) {
+        if (actual.equals(expected)) {
+            System.out.println("OK, actual = expected = " + actual);
+        } else {
+            System.out.println("ERROR, actual = " + actual + ", expected = " + expected);
+        }
     }
 
     @Override
@@ -46,38 +61,39 @@ public class LinearProbing<K, V> implements HashTable<K, V> {
         }
 
         // store value and increase counter
-        arr[index] = value;
+        arr[index] = new Pair(key, value);
         count++;
     }
 
     @Override
     public V get(K key) {
         int index = hash(key);
-
-        return arr[index];
+        while (arr[index] != null && arr[index].k != key) {
+            index = (index + 1) % size;
+        }
+        return (V) arr[index].v;
     }
 
     @Override
     public void remove(K key) {
-
     }
 
     private int hash(K key) {
         return (key.hashCode() & 0x7fffffff) % size;
     }
 
-    private V[] resize(int size) {
-        V[] newArr = (V[]) new Object[size];
+    private Pair[] resize(int size) {
+        Pair[] newArr = (Pair[]) new Object[size];
         for (int i = 0; i < arr.length; i++) {
             newArr[i] = arr[i];
         }
         return newArr;
     }
 
-    private static class Pair<K, V> {
+    public static class Pair<K, V> {
 
-        private K k;
-        private V v;
+        K k;
+        V v;
 
         public Pair(K key, V value) {
             k = key;
