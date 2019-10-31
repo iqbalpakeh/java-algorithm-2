@@ -36,13 +36,52 @@ public class LinearProbing<K, V> implements HashTable<K, V> {
         check(ht.get(23), "TwentyThree");
         check(ht.get(6), "Six");
 
+        ht.remove(3);
+        check(ht.get(1), "One");
+        check(ht.get(2), "Two");
+        check(ht.get(3), null);
+        check(ht.get(4), "Four");
+        check(ht.get(5), "Five");
+        check(ht.get(23), "TwentyThree");
+        check(ht.get(6), "Six");
+        ht.put(3, "Three");
+
+        ht.remove(23);
+        check(ht.get(1), "One");
+        check(ht.get(2), "Two");
+        check(ht.get(3), "Three");
+        check(ht.get(4), "Four");
+        check(ht.get(5), "Five");
+        check(ht.get(23), null);
+        check(ht.get(6), "Six");
+        ht.put(23, "TwentyThree");
+
+
+        ht.remove(6);
+        check(ht.get(1), "One");
+        check(ht.get(2), "Two");
+        check(ht.get(3), "Three");
+        check(ht.get(4), "Four");
+        check(ht.get(5), "Five");
+        check(ht.get(23), "TwentyThree");
+        check(ht.get(6), null);
+        ht.put(6, "Six");
+
     }
 
     public static void check(String actual, String expected) {
-        if (actual.equals(expected)) {
-            System.out.println("OK, actual = expected = " + actual);
+        if (expected != null) {
+            if (actual.equals(expected)) {
+                System.out.println("OK, actual = expected = " + actual);
+            } else {
+                System.out.println("ERROR, actual = " + actual + ", expected = " + expected);
+            }
         } else {
-            System.out.println("ERROR, actual = " + actual + ", expected = " + expected);
+            if (actual != null) {
+                System.out.println("ERROR, actual = " + actual + ", expected = null");
+            } else {
+                System.out.println("OK, actual = expected = null");
+            }
         }
     }
 
@@ -71,20 +110,26 @@ public class LinearProbing<K, V> implements HashTable<K, V> {
         while (arr[index] != null && arr[index].k != key) {
             index = (index + 1) % size;
         }
+        if (arr[index] == null) return null;
         return (V) arr[index].v;
     }
 
     @Override
     public void remove(K key) {
         int index = hash(key);
+        // Find the index
         while (arr[index] != null && arr[index].k != key) {
-            arr[index] = null;
+            index = (index + 1) % size;
         }
+        arr[index] = null;
         // reharse the remaining pair
         index = (index + 1) % size;
         while (arr[index] != null) {
+            K keyToStore = (K) arr[index].k;
+            V valToStore = (V) arr[index].v;
+            arr[index] = null;
+            put(keyToStore, valToStore);
             index = (index + 1) % size;
-            put((K) arr[index].k, (V) arr[index].v);
         }
     }
 
@@ -93,7 +138,7 @@ public class LinearProbing<K, V> implements HashTable<K, V> {
     }
 
     private Pair[] resize(int size) {
-        Pair[] newArr = (Pair[]) new Object[size];
+        Pair[] newArr = new Pair[size];
         for (int i = 0; i < arr.length; i++) {
             newArr[i] = arr[i];
         }
