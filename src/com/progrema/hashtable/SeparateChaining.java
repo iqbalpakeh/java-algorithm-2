@@ -1,6 +1,12 @@
 package com.progrema.hashtable;
 
+import com.progrema.linkedlist.GeneralLinkedList;
+
 public class SeparateChaining<K, V> implements HashTable<K, V> {
+
+    public static void test() {
+        GeneralLinkedList.test();
+    }
 
     @Override
     public void put(K key, V value) {
