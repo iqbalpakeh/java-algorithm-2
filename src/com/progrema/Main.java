@@ -1,8 +1,8 @@
 package com.progrema;
 
-import com.progrema.hashtable.SeparateChaining;
 import com.progrema.queue.CircularArrayQueue;
 import com.progrema.queue.Queue;
+import com.progrema.search.LinearSearch;
 import com.progrema.stack.LinkedListStack;
 import com.progrema.stack.Stack;
 
@@ -25,7 +25,9 @@ public class Main {
         // testPalindrome();
 
         // LinearProbing.test();
-        SeparateChaining.test();
+        // SeparateChaining.test();
+
+        LinearSearch.test();
 
     }
 
