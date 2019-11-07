@@ -45,7 +45,7 @@ public class BinarySearch implements Search {
 
     @Override
     public int find(int value) {
-        return find(value, 0, arr.length - 1);
+        return find(value, 0, arr.length);
     }
 
     private int find(int val, int lo, int hi) {
