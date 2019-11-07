@@ -2,7 +2,7 @@ package com.progrema;
 
 import com.progrema.queue.CircularArrayQueue;
 import com.progrema.queue.Queue;
-import com.progrema.search.LinearSearch;
+import com.progrema.search.BinarySearch;
 import com.progrema.stack.LinkedListStack;
 import com.progrema.stack.Stack;
 
@@ -27,7 +27,8 @@ public class Main {
         // LinearProbing.test();
         // SeparateChaining.test();
 
-        LinearSearch.test();
+        // LinearSearch.test();
+        BinarySearch.test();
 
     }
 
