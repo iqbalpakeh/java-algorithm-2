@@ -45,16 +45,16 @@ public class BinarySearch implements Search {
 
     @Override
     public int find(int value) {
-        return find(value, 0, arr.length);
+        return find(value, 0, arr.length - 1);
     }
 
     private int find(int val, int lo, int hi) {
-        if (lo >= hi) return -1;
-        int mid = lo + (hi - lo) / 2;
+        if (hi <= lo) return -1;
+        int mid = 1 + lo + (hi - lo) / 2;
         if (val > arr[mid]) {
-            return find(val, mid + 1, hi);
+            return find(val, mid, hi);
         } else if (val < arr[mid]) {
-            return find(val, lo, mid);
+            return find(val, lo, mid - 1);
         } else {
             return mid;
         }
