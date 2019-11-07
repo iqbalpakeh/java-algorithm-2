@@ -15,13 +15,6 @@ public class SeparateChaining<K, V> implements HashTable<K, V> {
     // Implementation
     // -------------------------------------------
 
-    public SeparateChaining() {
-        hashTable = new GeneralLinkedList[size];
-        for (int i = 0; i < size; i++) {
-            hashTable[i] = new GeneralLinkedList<>();
-        }
-    }
-
     public static void test() {
 
         HashTable<Integer, String> ht = new SeparateChaining<>();
@@ -73,6 +66,8 @@ public class SeparateChaining<K, V> implements HashTable<K, V> {
         check(ht.get(6), null);
         ht.put(6, "Six");
 
+        check(ht.get(7), null);
+
     }
 
     public static void check(String actual, String expected) {
@@ -88,6 +83,13 @@ public class SeparateChaining<K, V> implements HashTable<K, V> {
             } else {
                 System.out.println("OK, actual = expected = null");
             }
+        }
+    }
+
+    public SeparateChaining() {
+        hashTable = new GeneralLinkedList[size];
+        for (int i = 0; i < size; i++) {
+            hashTable[i] = new GeneralLinkedList<>();
         }
     }
 
