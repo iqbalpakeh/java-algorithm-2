@@ -2,9 +2,9 @@ package com.progrema;
 
 import com.progrema.queue.CircularArrayQueue;
 import com.progrema.queue.Queue;
-import com.progrema.search.BinarySearch;
 import com.progrema.stack.LinkedListStack;
 import com.progrema.stack.Stack;
+import com.progrema.tree.BST;
 
 public class Main {
 
@@ -28,7 +28,9 @@ public class Main {
         // SeparateChaining.test();
 
         // LinearSearch.test();
-        BinarySearch.test();
+        // BinarySearch.test();
+
+        BST.test();
 
     }
 

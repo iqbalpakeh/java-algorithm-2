@@ -4,16 +4,8 @@ import com.progrema.linkedlist.GeneralLinkedList;
 
 public class SeparateChaining<K, V> implements HashTable<K, V> {
 
-    // -------------------------------------------
-    // Unit test
-    // -------------------------------------------
-
     private GeneralLinkedList<Pair<K, V>>[] hashTable;
     private int size = 10;
-
-    // -------------------------------------------
-    // Implementation
-    // -------------------------------------------
 
     public static void test() {
 

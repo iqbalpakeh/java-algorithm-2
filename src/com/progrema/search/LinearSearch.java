@@ -2,19 +2,11 @@ package com.progrema.search;
 
 public class LinearSearch implements Search {
 
-    // -------------------------------------------
-    // Unit test
-    // -------------------------------------------
-
     private int[] arr;
 
     public LinearSearch(int[] array) {
         this.arr = array;
     }
-
-    // -------------------------------------------
-    // Implementation
-    // -------------------------------------------
 
     public static void test() {
 

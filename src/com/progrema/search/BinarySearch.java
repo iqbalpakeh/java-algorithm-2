@@ -2,19 +2,11 @@ package com.progrema.search;
 
 public class BinarySearch implements Search {
 
-    // -------------------------------------------
-    // Unit test
-    // -------------------------------------------
-
     private int[] arr;
 
     public BinarySearch(int[] array) {
         this.arr = array;
     }
-
-    // -------------------------------------------
-    // Implementation
-    // -------------------------------------------
 
     public static void test() {
 
@@ -45,16 +37,16 @@ public class BinarySearch implements Search {
 
     @Override
     public int find(int value) {
-        return find(value, 0, arr.length - 1);
+        return find(value, 0, arr.length);
     }
 
     private int find(int val, int lo, int hi) {
         if (hi <= lo) return -1;
-        int mid = 1 + lo + (hi - lo) / 2;
+        int mid = lo + (hi - lo) / 2;
         if (val > arr[mid]) {
-            return find(val, mid, hi);
+            return find(val, mid + 1, hi);
         } else if (val < arr[mid]) {
-            return find(val, lo, mid - 1);
+            return find(val, lo, mid);
         } else {
             return mid;
         }
