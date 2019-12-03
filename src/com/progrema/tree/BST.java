@@ -35,6 +35,9 @@ public class BST<K extends Comparable<K>, V> {
             bst.put(2, "Two");
             bst.put(4, "Four");
 
+            check(String.valueOf(bst.getMax()), "Eight");
+            check(String.valueOf(bst.getMin()), "Two");
+
             for (Object val : bst.iterator()) {
                 System.out.println(val);
             }
@@ -142,6 +145,36 @@ public class BST<K extends Comparable<K>, V> {
 
     public void delete(K key) {
 
+    }
+
+    public V getMax() {
+        return getMax(root);
+    }
+
+    private V getMax(Node node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.right != null) {
+            return getMax(node.right);
+        } else {
+            return node.val;
+        }
+    }
+
+    public V getMin() {
+        return getMin(root);
+    }
+
+    private V getMin(Node node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.left != null) {
+            return getMax(node.left);
+        } else {
+            return node.val;
+        }
     }
 
     public Iterable<V> iterator() {
