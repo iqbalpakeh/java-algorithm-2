@@ -1,31 +1,29 @@
 package com.progrema.tree;
 
-public class BST<K extends Comparable<K>, V> {
+import java.util.LinkedList;
 
-    // ------------------------------------------------------------
-    // Implementation Section
-    // ------------------------------------------------------------
+public class BST<K extends Comparable<K>, V> {
 
     private Node root;
 
     public static void test() {
 
-        {
-            BST bst = new BST();
-            bst.put(2, "Two");
-            bst.put(3, "Three");
-            bst.put(1, "One");
-
-            check(String.valueOf(bst.get(2)), "Two");
-            check(String.valueOf(bst.get(3)), "Three");
-            check(String.valueOf(bst.get(1)), "One");
-            check(String.valueOf(bst.get(4)), "null");
-
-            check(bst.size(), 3);
-
-            check(bst.rank(3), 2);
-            check(bst.rank(4), 3);
-        }
+        // {
+        //     BST bst = new BST();
+        //     bst.put(2, "Two");
+        //     bst.put(3, "Three");
+        //     bst.put(1, "One");
+        //
+        //     check(String.valueOf(bst.get(2)), "Two");
+        //     check(String.valueOf(bst.get(3)), "Three");
+        //     check(String.valueOf(bst.get(1)), "One");
+        //     check(String.valueOf(bst.get(4)), "null");
+        //
+        //     check(bst.size(), 3);
+        //
+        //     check(bst.rank(3), 2);
+        //     check(bst.rank(4), 3);
+        // }
 
         {
             BST bst = new BST();
@@ -37,7 +35,9 @@ public class BST<K extends Comparable<K>, V> {
             bst.put(2, "Two");
             bst.put(4, "Four");
 
-            System.out.println("END");
+            for (Object val : bst.iterator()) {
+                System.out.println(val);
+            }
 
         }
     }
@@ -140,16 +140,23 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
-    // ------------------------------------------------------------
-    // Test Section
-    // ------------------------------------------------------------
-
     public void delete(K key) {
 
     }
 
-    public Iterable<K> iterator() {
-        return null;
+    public Iterable<V> iterator() {
+        LinkedList<V> queue = new LinkedList<>();
+        iterator(root, queue);
+        return queue;
+    }
+
+    private void iterator(Node node, LinkedList<V> queue) {
+        if (node == null) {
+            return;
+        }
+        iterator(node.left, queue);
+        queue.add(node.val);
+        iterator(node.right, queue);
     }
 
     private class Node {
