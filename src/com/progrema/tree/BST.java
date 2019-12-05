@@ -42,6 +42,25 @@ public class BST<K extends Comparable<K>, V> {
                 System.out.println(val);
             }
 
+            bst.deleteMin();
+
+            check(String.valueOf(bst.getMax()), "Eight");
+            check(String.valueOf(bst.getMin()), "Three");
+
+            for (Object val : bst.iterator()) {
+                System.out.println(val);
+            }
+
+            bst.deleteMax();
+
+            check(String.valueOf(bst.getMax()), "Seven");
+            check(String.valueOf(bst.getMin()), "Three");
+
+            for (Object val : bst.iterator()) {
+                System.out.println(val);
+            }
+
+
         }
     }
 
@@ -147,19 +166,39 @@ public class BST<K extends Comparable<K>, V> {
 
     }
 
+    public void deleteMin() {
+        root = deleteMin(root);
+    }
+
+    private Node deleteMin(Node node) {
+        if (node.left == null) {
+            return node.right;
+        }
+        node.left = deleteMin(node.left);
+        return node;
+    }
+
+    public void deleteMax() {
+        root = deleteMax(root);
+    }
+
+    private Node deleteMax(Node node) {
+        if (node.right == null) {
+            return node.left;
+        }
+        node.right = deleteMax(node.right);
+        return node;
+    }
+
     public V getMax() {
         return getMax(root);
     }
 
     private V getMax(Node node) {
-        if (node == null) {
-            return null;
-        }
-        if (node.right != null) {
-            return getMax(node.right);
-        } else {
+        if (node.right == null) {
             return node.val;
         }
+        return getMax(node.right);
     }
 
     public V getMin() {
@@ -167,14 +206,10 @@ public class BST<K extends Comparable<K>, V> {
     }
 
     private V getMin(Node node) {
-        if (node == null) {
-            return null;
-        }
-        if (node.left != null) {
-            return getMax(node.left);
-        } else {
+        if (node.left == null) {
             return node.val;
         }
+        return getMin(node.left);
     }
 
     public Iterable<V> iterator() {
