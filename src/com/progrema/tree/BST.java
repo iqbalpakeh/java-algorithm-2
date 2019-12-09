@@ -8,59 +8,51 @@ public class BST<K extends Comparable<K>, V> {
 
     public static void test() {
 
-        // {
-        //     BST bst = new BST();
-        //     bst.put(2, "Two");
-        //     bst.put(3, "Three");
-        //     bst.put(1, "One");
-        //
-        //     check(String.valueOf(bst.get(2)), "Two");
-        //     check(String.valueOf(bst.get(3)), "Three");
-        //     check(String.valueOf(bst.get(1)), "One");
-        //     check(String.valueOf(bst.get(4)), "null");
-        //
-        //     check(bst.size(), 3);
-        //
-        //     check(bst.rank(3), 2);
-        //     check(bst.rank(4), 3);
-        // }
+        BST bst = new BST();
+        bst.put(5, "Five");
+        bst.put(7, "Seven");
+        bst.put(6, "Six");
+        bst.put(8, "Eight");
+        bst.put(3, "Three");
+        bst.put(2, "Two");
+        bst.put(4, "Four");
 
-        {
-            BST bst = new BST();
-            bst.put(5, "Five");
-            bst.put(7, "Seven");
-            bst.put(6, "Six");
-            bst.put(8, "Eight");
-            bst.put(3, "Three");
-            bst.put(2, "Two");
-            bst.put(4, "Four");
+        check(bst.size(), 7);
+        check(String.valueOf(bst.getMax()), "Eight");
+        check(String.valueOf(bst.getMin()), "Two");
 
-            check(String.valueOf(bst.getMax()), "Eight");
-            check(String.valueOf(bst.getMin()), "Two");
+        for (Object val : bst.iterator()) {
+            System.out.println(val);
+        }
 
-            for (Object val : bst.iterator()) {
-                System.out.println(val);
-            }
+        bst.deleteMin();
+        check(bst.size(), 6);
 
-            bst.deleteMin();
+        check(String.valueOf(bst.getMax()), "Eight");
+        check(String.valueOf(bst.getMin()), "Three");
 
-            check(String.valueOf(bst.getMax()), "Eight");
-            check(String.valueOf(bst.getMin()), "Three");
+        for (Object val : bst.iterator()) {
+            System.out.println(val);
+        }
 
-            for (Object val : bst.iterator()) {
-                System.out.println(val);
-            }
+        bst.deleteMax();
+        check(bst.size(), 5);
 
-            bst.deleteMax();
+        check(String.valueOf(bst.getMax()), "Seven");
+        check(String.valueOf(bst.getMin()), "Three");
 
-            check(String.valueOf(bst.getMax()), "Seven");
-            check(String.valueOf(bst.getMin()), "Three");
+        System.out.println("========");
 
-            for (Object val : bst.iterator()) {
-                System.out.println(val);
-            }
+        for (Object val : bst.iterator()) {
+            System.out.println(val);
+        }
 
+        bst.delete(6);
 
+        System.out.println("========");
+
+        for (Object val : bst.iterator()) {
+            System.out.println(val);
         }
     }
 
@@ -163,7 +155,33 @@ public class BST<K extends Comparable<K>, V> {
     }
 
     public void delete(K key) {
+        root = delete(root, key);
+    }
 
+    private Node delete(Node x, K key) {
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) x.left = delete(x.left, key);
+        else if (cmp > 0) x.right = delete(x.right, key);
+        else {
+            if (x.right == null) return x.left;
+            if (x.left == null) return x.right;
+            Node t = x;
+            x = min(t.right);
+            x.right = deleteMin(t.right);
+            x.left = t.left;
+        }
+        x.size = size(x.left) + size(x.right) + 1;
+        return x;
+    }
+
+    private Node min(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return min(node.left);
     }
 
     public void deleteMin() {
@@ -175,6 +193,7 @@ public class BST<K extends Comparable<K>, V> {
             return node.right;
         }
         node.left = deleteMin(node.left);
+        node.size = 1 + size(node.left) + size(node.right);
         return node;
     }
 
@@ -187,6 +206,7 @@ public class BST<K extends Comparable<K>, V> {
             return node.left;
         }
         node.right = deleteMax(node.right);
+        node.size = 1 + size(node.left) + size(node.right);
         return node;
     }
 
