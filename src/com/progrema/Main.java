@@ -1,5 +1,6 @@
 package com.progrema;
 
+import com.progrema.graph.BFS;
 import com.progrema.queue.CircularArrayQueue;
 import com.progrema.queue.Queue;
 import com.progrema.stack.LinkedListStack;
@@ -30,7 +31,9 @@ public class Main {
         // LinearSearch.test();
         // BinarySearch.test();
 
-        BST.test();
+        // BST.test();
+
+        BFS.test();
 
     }
 
