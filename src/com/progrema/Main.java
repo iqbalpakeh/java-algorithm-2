@@ -1,6 +1,7 @@
 package com.progrema;
 
 import com.progrema.graph.BFS;
+import com.progrema.graph.DFS;
 import com.progrema.queue.CircularArrayQueue;
 import com.progrema.queue.Queue;
 import com.progrema.stack.LinkedListStack;
@@ -34,6 +35,7 @@ public class Main {
         // BST.test();
 
         BFS.test();
+        DFS.test();
 
     }
 

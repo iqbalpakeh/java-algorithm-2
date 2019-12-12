@@ -39,6 +39,8 @@ public class BFS<T> {
 
     public static void test() {
 
+        System.out.println("BFS");
+
         Vertex<Integer> vertex1 = new Vertex<>(1);
         Vertex<Integer> vertex2 = new Vertex<>(2);
         Vertex<Integer> vertex3 = new Vertex<>(3);
