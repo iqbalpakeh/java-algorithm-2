@@ -1,6 +1,6 @@
 package com.progrema;
 
-import com.progrema.graph.BFS;
+import com.progrema.digraph.BFS;
 import com.progrema.graph.DFS;
 import com.progrema.queue.CircularArrayQueue;
 import com.progrema.queue.Queue;
@@ -33,9 +33,11 @@ public class Main {
         // BinarySearch.test();
 
         // BST.test();
+//
+//        BFS.test();
+//        DFS.test();
 
         BFS.test();
-        DFS.test();
 
     }
 
