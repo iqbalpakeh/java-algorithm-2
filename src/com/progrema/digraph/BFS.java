@@ -62,18 +62,20 @@ public class BFS<T> {
         vertex11.addEdge(vertex12);
         vertex12.addEdge(vertex9);
 
-        BFS bfs = new BFS(vertex0);
+        BFS bfs = new BFS(vertex7);
         bfs.trace(vertex4);
+        bfs.trace(vertex5);
 
     }
 
     public void trace(Vertex<T> vertex) {
         Vertex<T> current = vertex;
         System.out.println("trace of " + vertex.getVal());
-        while (current.getFrom() != root) {
+        while (current.getVal() != root.getVal()) {
             System.out.println("- " + current.getVal());
             current = current.getFrom();
         }
+        System.out.println("- " + current.getVal());
     }
 
 }
