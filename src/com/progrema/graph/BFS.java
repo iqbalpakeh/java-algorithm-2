@@ -6,7 +6,7 @@ import java.util.Queue;
 public class BFS<T> {
 
     /**
-     * pseudocode:
+     * Steps:
      * <p>
      * set root to visited
      * add root to queue

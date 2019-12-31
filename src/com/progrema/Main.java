@@ -33,11 +33,11 @@ public class Main {
         // BinarySearch.test();
 
         // BST.test();
-//
-//        BFS.test();
-//        DFS.test();
 
-        BFS.test();
+        // BFS.test();
+        // DFS.test();
+
+        // BFS.test();
 
     }
 
