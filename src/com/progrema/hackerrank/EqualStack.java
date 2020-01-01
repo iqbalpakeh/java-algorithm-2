@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class EqualStack {
 
+    // https://www.hackerrank.com/challenges/equal-stacks/problem
+
     private static final Scanner scanner = new Scanner(System.in);
 
     static int equalStacks(int[] h1, int[] h2, int[] h3) {
